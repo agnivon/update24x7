@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    <script src="/js/contact.js"></script>
+    <link rel="stylesheet" href="/css/contact.css">
+    <title>Contact Us</title>
+</head>
+<body>
+    <header>
+        <%- include('./partials/nav', {cp: 'contact'}); %>
+    </header>
+    <section class="container my-5 pb-3">
+        <h1 class="display-3">Contact Us</h1>
+        <%- include('./partials/toast', {id: 'responseToast'}); %>
+        <form action="/contact" id="contactForm" method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="query" class="form-label">Query</label>
+                <textarea class="form-control form-control-lg" id="query" name="query" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-dark w-100 btn-lg">Submit</button>
+            </div>
+        </form>
+    </section>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

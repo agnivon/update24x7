@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    <title>About Us</title>
+</head>
+<body>
+    <header>
+        <%- include('./partials/nav', {cp: 'about'}); %>
+    </header>
+    <section class="container my-5 d-flex justify-content-center">
+        <div class="">
+            <h6 class="display-6">Location</h6>
+            <div>
+                <iframe width="800" height="300" frameborder="0"
+                src="https://www.bing.com/maps/embed?h=300&w=800&cp=12.9637432849335~77.58682250978802&lvl=11&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+                scrolling="no">
+                </iframe>
+                <div style="white-space: nowrap; text-align: center; width: 800px; padding: 6px 0;">
+                    <a id="largeMapLink" target="_blank"
+                        href="https://www.bing.com/maps?cp=12.9637432849335~77.58682250978802&amp;sty=r&amp;lvl=11&amp;FORM=MBEDLD">View
+                        Larger Map</a> &nbsp; | &nbsp;
+                    <a id="dirMapLink" target="_blank"
+                        href="https://www.bing.com/maps/directions?cp=12.9637432849335~77.58682250978802&amp;sty=r&amp;lvl=11&amp;rtp=~pos.12.9637432849335_77.58682250978802____&amp;FORM=MBEDLD">Get
+                        Directions</a>
+                </div>
+            </div>
+            <h6 class="display-6">About Us</h6>
+            <p style="text-align: justify;">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam iste odio at eos quasi iusto aut, nemo est. Quae impedit quod architecto doloremque dolor similique obcaecati libero id consequuntur non?
+                Esse facilis similique culpa, expedita aut officiis assumenda sunt magni, fugit unde commodi obcaecati saepe cum explicabo eum labore! Facere temporibus suscipit quisquam ut odio. Repellat, deleniti aperiam? Doloremque, officiis!
+                Fuga recusandae aliquam pariatur, rem, non voluptatum amet facilis debitis itaque aliquid necessitatibus harum reiciendis ut dicta provident. Doloremque error corporis voluptas, quis possimus facilis necessitatibus nisi. Amet, blanditiis consequuntur?
+                Rerum accusantium libero recusandae facere? Necessitatibus doloribus nesciunt iusto exercitationem voluptatibus magnam accusamus sint? Nostrum amet temporibus, reprehenderit doloremque et omnis, iure placeat perspiciatis, laboriosam consectetur minus magnam nemo neque?
+                Vitae rerum, inventore obcaecati laudantium sunt fuga magni mollitia voluptatum beatae odio consequuntur deleniti quis, a praesentium! Quisquam, ad delectus dolorum aperiam praesentium, ab eos odit modi hic, quos harum?
+            </p>
+        </div>
+    </section>
+    <%- include('./partials/footer'); %>
+</body>
+</html>

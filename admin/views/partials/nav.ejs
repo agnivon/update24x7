@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid fs-5">
+        <a class="navbar-brand mb-0 h1" href="#">Update 24x7 Admin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/home">Home</a>
+                <% if(!auth) { %>
+                    <a class="nav-link <% if(cp==='login'){ %> active <% } %>" href="/auth/login">Login</a>
+                    <a class="nav-link <% if(cp==='register'){ %> active <% } %>" href="/auth/register">Register</a>
+                <% } else if(isAdmin) { %>
+                    <a class="nav-link <% if(cp==='users'){ %> active <% } %>" href="/admin/users">Users</a>
+                    <a class="nav-link <% if(cp==='news'){ %> active <% } %>" href="/admin/news">News</a>
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

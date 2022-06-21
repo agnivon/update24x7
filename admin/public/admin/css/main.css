@@ -1,0 +1,13 @@
+body {
+    padding-top: 65px;
+}
+
+#responseToast {
+    top: 70px;
+    right: 10px;
+    z-index: 11;
+}
+
+td {
+    max-width: 20%;
+}

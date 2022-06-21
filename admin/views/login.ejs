@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    
+    <script src="/admin/js/login.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <%- include('./partials/nav', {auth: false, isAdmin: false, cp: 'login'}); %>
+    </header>
+    <!-- Toast -->
+    <%- include('./partials/toast', { id: 'responseToast'}); %>
+    <div class="container d-flex justify-content-center my-3">
+        <div class="card w-50 shadow">
+            <div class="card-body">
+                <h1 class="card-title text-center">Login</h1>
+                <form action="/auth/login" class="fs-5" method="post" id="loginForm">
+                    <div class="m-4 form-floating">
+                        <input type="text" class="form-control" id="username" name="username"
+                            placeholder="Enter your username" required>
+                        <label for="username" class="form-label">Username</label>
+                    </div>
+                    <div class="m-4 form-floating">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter password" required>
+                        <label for="password" class="form-label">Password</label>
+                    </div>
+                    <div class="m-4">
+                        <button type="submit" class="btn btn-dark btn-lg w-100">Login</button>
+                    </div>
+                </form>
+                <hr>
+                <div class="m-4">
+                    <a href="/auth/register">
+                        <button type="button" class="btn btn-dark btn-lg w-100">Register</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

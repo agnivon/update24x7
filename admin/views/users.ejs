@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    
+    <script src="/admin/js/users.js"></script>
+    <!-- DataTables CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+    <title>Users</title>
+</head>
+<body>
+    <header>
+        <%- include('./partials/nav', {auth: true, isAdmin, cp: 'users'}); %>
+    </header>
+    <!-- Toast -->
+    <%- include('./partials/toast', { id: 'responseToast'}); %>
+    <!-- Users Table-->
+    <div class="container my-3">
+        <h1>User List</h1>
+        <table id="userTable" class="table table-responsive text-center display cell-border">
+            <thead>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <% users.forEach((user)=> { %>
+                    <tr>
+                        <td class="user-id">
+                            <%=user._id%>
+                        </td>
+                        <td class="user-username">
+                            <%=user.username%>
+                        </td>
+                        <td class="user-email">
+                            <%=user.email%>
+                        </td>
+                        <td class="user-role">
+                            <% if(user.isAdmin) { %>
+                                Admin
+                            <% } else { %>
+                                User
+                            <% } %>
+                        </td>
+                        <td>
+                            <button class="btn btn-warning update-user" id="<%=user._id%>">
+                                Update User
+                            </button>
+                            <button class="btn btn-danger delete-user" id="<%=user._id%>">
+                                Delete User
+                            </button>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <div class="container d-flex justify-content-center">
+            <button class="btn btn-success w-50 add-user">Add User</button>
+        </div>
+    </div>
+    <!-- User Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="userForm">
+                        <div class="mb-3">
+                            <label for="user-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="user-username" name="username" placeholder="Enter username"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="user-email" name="email"
+                                placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-role" class="form-label">Role</label>
+                            <select class="form-select" aria-label="Default select example" id="user-role" name="isAdmin"
+                                required>
+                                <option value="false">User</option>
+                                <option value="true">Admin</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="user-password" name="password"
+                                placeholder="Enter password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-cpassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="user-cpassword" name="cpassword"
+                                placeholder="Confirm password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="userForm">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    <script src="/js/home.js"></script>
+    <link rel="stylesheet" href="/css/home.css">
+    <!-- socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <%- include('./partials/nav', {cp: 'home'}); %>
+    </header>
+    <!-- Weather -->
+    <section class="container my-3">
+        <h6 class="display-6">Weather</h6>
+        <div class="text-center" id="weatherCardSpinner">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="card" id="weatherCard">
+            <div class="card-body d-flex justify-content-evenly align-items-center fs-3" id="weatherCardBody">
+              <span>Weather</span>
+              <img class="img-fluid" src="" alt="Weather Icon">
+              <span>Temperature</span>
+              <span>City</span>
+            </div>
+          </div>
+    </section>
+    <!-- News -->
+    <section class="container my-3">
+        <h6 class="display-6">News</h6>
+        <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <% news.forEach((x, i) => { %>
+                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="<%=i%>"
+                    aria-current="true" aria-label="Slide <%=i%>"></button>
+                <% }); %> 
+            </div>
+            <div class="carousel-inner">
+                <% news.forEach((x) => { %> 
+                    <div class="carousel-item">
+                        <img src="<%=x.img%>" class="news-img img-fluid d-block w-100" alt="...">
+                        <div class="news-story text-white bg-dark">
+                            <h1><%=x.title%></h1>
+                            <h5><em><%=x.date.toDateString()%></em></h5>
+                            <p><%=x.story%></p>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
+                data-bs-slide="prev">
+                <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+                <span class="material-icons md-48">
+                    keyboard_double_arrow_left
+                </span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
+                data-bs-slide="next">
+                <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+                <span class="material-icons md-48">
+                    keyboard_double_arrow_right
+                </span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+    <section class="container my-5">
+        <div class="mb-3">
+            <label for="chatbox" class="form-label display-6">Global Chat Box</label>
+            <textarea class="form-control" id="chatbox" rows="5" readonly></textarea>
+        </div>
+        <div class="input-group mb-3" id="connectbox">
+            <input type="text" class="form-control" id="username" placeholder="Type username" aria-label="Type username"
+                aria-describedby="basic-addon2">
+            <button class="btn btn-dark fs-5" id="connectBtn">Connect</button>
+        </div>
+        <div class="input-group mb-3" id="messagebox">
+            <input type="text" class="form-control" id="message" placeholder="Type message" aria-label="Type message"
+                aria-describedby="basic-addon2">
+            <button class="btn btn-dark" id="messageBtn">
+                <span class="material-icons" style="line-height:1.5;">
+                    send
+                </span>
+            </button>
+        </div>
+    </section>
+    <%- include('./partials/footer'); %>
+</body>
+</html>
